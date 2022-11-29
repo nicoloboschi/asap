@@ -1,2 +1,18 @@
 #!/bin/bash
+if [ "$#" -eq 0 ]; then
+    echo "
+        ___           _______.     ___      .______   
+        /   \         /       |    /   \     |   _  \  
+    /  ^  \       |   (----\`   /  ^  \    |  |_)  | 
+    /  /_\  \       \   \      /  /_\  \   |   ___/  
+    /  _____  \  .----)   |    /  _____  \  |  |      
+    /__/     \__\ |_______/    /__/     \__\ | _|                           
+        
+    "
+    echo "Speed up your local builds."
+    echo "Prepend 'asap' to maven commands to get useless checks to be skipped while you're developing locally."
+    echo "$(tput setaf 2)asap mvn clean install$(tput setaf 4)"
+    exit 1
+fi
+
 "$@" -Dcheckstyle.skip -Dspotbugs.skip -Dlicense.skip -DskipSourceReleaseAssembly -Drat.skip -Djavadoc.skip -Dmaven.javadoc.skip

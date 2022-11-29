@@ -31,7 +31,7 @@ echo "
 
 echo "Installing $(tput setaf 6)ASAP$(tput setaf 7) please wait"
 
-URL="https://github.com/datastax/pulsar/releases/download/ls210_2.5/lunastreaming-shell-2.10.2.5-bin.zip"
+URL="https://raw.githubusercontent.com/nicoloboschi/asap/main/asap"
 
 asap_home_dir=$HOME/.asap
 mkdir -p $asap_home_dir
@@ -71,7 +71,7 @@ function inject_if_not_found() {
     touch "$file"
     if [[ -z $(grep 'asap/bin' "$file") ]]; then
         echo -e "\n$init_snipped" >> "$file"
-        echo "$(tput setaf 2)[OK]$(tput setaf 7) - pulsar-shell bin added to ${bash_profile}"
+        echo "$(tput setaf 2)[OK]$(tput setaf 7) - asap bin added to ${file}"
     fi
 }
 
