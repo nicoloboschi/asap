@@ -64,6 +64,7 @@ echo "$(tput setaf 2)[OK]$(tput setaf 7) - curl command is available"
 echo ""
 echo "$(tput setaf 6)Downloading:$(tput setaf 7)"
 curl --fail --location --progress-bar "$URL" > "$asap_bin/asap"  
+chmod +x $asap_bin/*
 echo "$(tput setaf 2)[OK]$(tput setaf 7) - Downloaded & Installed"  
 
 function inject_if_not_found() {
