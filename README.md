@@ -3,7 +3,7 @@
 Speed up your local builds.
 Prepend 'asap' to maven commands to get useless checks to be skipped while you're developing locally.
 
-Only maven is supported. (mvnd as well ;) )
+Only maven is supported. (`mvnd` as well ;) )
 
 ## Get started
 
@@ -14,6 +14,9 @@ curl -Ls "https://raw.githubusercontent.com/nicoloboschi/asap/main/get-asap.sh" 
 ```
 asap mvn package
 ```
+
+## Addiotional flags
+- `-nsu`
 
 ## Skipped plugins
 - Spotbugs
