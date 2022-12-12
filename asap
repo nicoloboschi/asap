@@ -19,7 +19,7 @@ flags="-Dcheckstyle.skip -Dspotbugs.skip -Dlicense.skip -DskipSourceReleaseAssem
 
 if [ "$1" == "mod" ]; then
     shift 
-    mvnmod="install $flags -am -pl"
+    mvnmod="install $flags -am -DskipTests -pl"
     if command -v mvnd &> /dev/null; then
         mvnd $mvnmod "$@"
     else
