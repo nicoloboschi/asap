@@ -25,6 +25,16 @@ if [ "$1" == "mod" ]; then
     else
         mvn $mvnmod "$@"
     fi
+elif [ "$1" == "test" ]; then
+    shift 
+    mvnmod="test $flags -pl $1 -Dtest=$2"
+    shift
+    shift
+    if command -v mvnd &> /dev/null; then
+        mvnd $mvnmod "$@"
+    else
+        mvn $mvnmod "$@"
+    fi
 else
     "$@" $flags
 fi
