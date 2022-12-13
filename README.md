@@ -37,3 +37,15 @@ is equivalent to
 ```
 mvn[d] install -am -DskipTests -pl <module_name> <skipped_plugins>
 ```
+
+## Fast run test class/method
+
+```
+asap test <module_name> <class_or_method>
+```
+
+is equivalent to 
+
+```
+mvn[d] test  -pl <module_name> -Dtest=<class_or_method> <skipped_plugins>
+```
