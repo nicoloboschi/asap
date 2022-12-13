@@ -24,3 +24,16 @@ asap mvn package
 - Javadoc
 - Apache RAT
 - License checks
+
+
+## Fast compile single module
+
+```
+asap mod <module_name>
+```
+
+is equivalent to 
+
+```
+mvn[d] install -am -DskipTests -pl <module_name> <skipped_plugins>
+```
