@@ -15,7 +15,8 @@ if [ "$#" -eq 0 ]; then
     exit 1
 fi
 
-flags="-Dcheckstyle.skip -Dspotbugs.skip -Dlicense.skip -DskipSourceReleaseAssembly -Drat.skip -Djavadoc.skip -Dmaven.javadoc.skip -nsu"
+pulsar_flags="-DnarPluginPhase=none -DshadePluginPhase=none -DskipSourceReleaseAssembly"
+flags="-Dcheckstyle.skip -Dspotbugs.skip -Dlicense.skip -Drat.skip -Djavadoc.skip -Dmaven.javadoc.skip -nsu $pulsar_flags"
 
 if [ "$1" == "mod" ]; then
     shift 
