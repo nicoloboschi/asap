@@ -49,3 +49,16 @@ is equivalent to
 ```
 mvn[d] test  -pl <module_name> -Dtest=<class_or_method> <skipped_plugins>
 ```
+
+
+## Fast dependency tree with navigation
+
+```
+asap dep <module_name>
+```
+
+is equivalent to 
+
+```
+mvn[d] dependency:tree -pl <module_name> | less
+```

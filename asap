@@ -26,6 +26,15 @@ if [ "$1" == "mod" ]; then
     else
         mvn $mvnmod "$@"
     fi
+elif [ "$1" == "dep" ]; then
+    shift 
+    mvndep="dependency:tree $flags -pl $1"
+    shift
+    if command -v mvnd &> /dev/null; then
+        mvnd $mvndep "$@" | less
+    else
+        mvn $mvndep "$@" | less
+    fi
 elif [ "$1" == "test" ]; then
     shift 
     mvnmod="test $flags -pl $1 -Dtest=$2"
