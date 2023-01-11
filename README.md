@@ -38,6 +38,19 @@ is equivalent to
 mvn[d] install -am -DskipTests -pl <module_name> <skipped_plugins>
 ```
 
+
+## Fast compile single module (only it)
+
+```
+asap modonly <module_name>
+```
+
+is equivalent to 
+
+```
+mvn[d] install -DskipTests -pl <module_name> <skipped_plugins>
+```
+
 ## Fast run test class/method
 
 ```
