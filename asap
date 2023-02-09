@@ -26,6 +26,22 @@ if [ "$1" == "mod" ]; then
     else
         mvn $mvnmod "$@"
     fi
+elif [ "$1" == "cmod" ]; then
+    shift 
+    mvnmod="clean install $flags -am -DskipTests -pl"
+    if command -v mvnd &> /dev/null; then
+        mvnd $mvnmod "$@"
+    else
+        mvn $mvnmod "$@"
+    fi
+elif [ "$1" == "cmodonly" ]; then
+    shift 
+    mvnmod="clean install $flags -DskipTests -pl"
+    if command -v mvnd &> /dev/null; then
+        mvnd $mvnmod "$@"
+    else
+        mvn $mvnmod "$@"
+    fi
 elif [ "$1" == "modonly" ]; then
     shift 
     mvnmod="install $flags -DskipTests -pl"
