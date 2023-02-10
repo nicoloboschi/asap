@@ -15,7 +15,7 @@ curl -Ls "https://raw.githubusercontent.com/nicoloboschi/asap/main/get-asap.sh" 
 asap mvn package
 ```
 
-## Addiotional flags
+## Additional flags
 - `-nsu`
 
 ## Skipped plugins
