@@ -26,52 +26,15 @@ asap mvn package
 - License checks
 
 
-## Fast compile single module
-
-```
-asap mod <module_name>
-```
-
-is equivalent to 
-
-```
-mvn[d] install -am -DskipTests -pl <module_name> <skipped_plugins>
-```
+## Builtin commands
+ASAP provides you builtin commands for daily activities.
+All of the following commands assume you're using Maven.
+You can append any other flag after the command.
 
 
-## Fast compile single module (only it)
-
-```
-asap modonly <module_name>
-```
-
-is equivalent to 
-
-```
-mvn[d] install -DskipTests -pl <module_name> <skipped_plugins>
-```
-
-## Fast run test class/method
-
-```
-asap test <module_name> <class_or_method>
-```
-
-is equivalent to 
-
-```
-mvn[d] test  -pl <module_name> -Dtest=<class_or_method> <skipped_plugins>
-```
-
-
-## Fast dependency tree with navigation
-
-```
-asap dep <module_name>
-```
-
-is equivalent to 
-
-```
-mvn[d] dependency:tree -pl <module_name> | less
-```
+- `asap mod <module>`: build the module (`install`) with dependant modules (`-am`)
+- `asap cmod <module>`: build and clean the module (`install`) with dependant modules (`-am`)
+- `asap modonly <module>`: build the module (`install`) without dependant modules
+- `asap cmodonly <module>`: build and clean the module (`install`) without dependant modules
+- `asap test <module> <test-class/method>`: run tests for a module, you can specify a class/method
+- `asap dep <module>`: show dependencies of a module. You can append `-Dscope=compile` to remove test dependencies.
