@@ -14,17 +14,28 @@ fi
 pulsar_flags="-DskipSourceReleaseAssembly"
 flags="-Dcheckstyle.skip -Dspotbugs.skip -Dlicense.skip -Drat.skip -Djavadoc.skip -Dmaven.javadoc.skip -nsu $pulsar_flags"
 
+get_module_param() {
+    local param=$1
+    if [ "$1" != "." ]; then
+        echo "-pl $param"
+    fi
+}
+
 if [ "$1" == "mod" ]; then
-    shift 
-    mvnmod="install $flags -am -DskipTests -pl"
+    shift
+    module=$(get_module_param $1)
+    shift
+    mvnmod="install $flags -am -DskipTests $module"
     if command -v mvnd &> /dev/null; then
         mvnd $mvnmod "$@"
     else
         mvn $mvnmod "$@"
     fi
 elif [ "$1" == "cmod" ]; then
-    shift 
-    mvnmod="clean install $flags -am -DskipTests -pl"
+    shift
+    module=$(get_module_param $1)
+    shift
+    mvnmod="clean install $flags -am -DskipTests $module"
     if command -v mvnd &> /dev/null; then
         mvnd $mvnmod "$@"
     else
@@ -32,7 +43,9 @@ elif [ "$1" == "cmod" ]; then
     fi
 elif [ "$1" == "cmodonly" ]; then
     shift 
-    mvnmod="clean install $flags -DskipTests -pl"
+    module=$(get_module_param $1)
+    shift
+    mvnmod="clean install $flags -DskipTests $module"
     if command -v mvnd &> /dev/null; then
         mvnd $mvnmod "$@"
     else
@@ -40,7 +53,9 @@ elif [ "$1" == "cmodonly" ]; then
     fi
 elif [ "$1" == "modonly" ]; then
     shift 
-    mvnmod="install $flags -DskipTests -pl"
+    module=$(get_module_param $1)
+    shift
+    mvnmod="install $flags -DskipTests $module"
     if command -v mvnd &> /dev/null; then
         mvnd $mvnmod "$@"
     else
@@ -48,8 +63,9 @@ elif [ "$1" == "modonly" ]; then
     fi
 elif [ "$1" == "dep" ]; then
     shift 
-    mvndep="dependency:tree $flags -pl $1"
-    shift
+    module=$(get_module_param $1)
+    shift 
+    mvndep="dependency:tree $flags -pl $module"
     if command -v mvnd &> /dev/null; then
         mvnd $mvndep "$@" | less
     else
@@ -57,8 +73,9 @@ elif [ "$1" == "dep" ]; then
     fi
 elif [ "$1" == "test" ]; then
     shift 
-    mvnmod="test $flags -pl $1 -Dtest=$2"
+    module=$(get_module_param $1)
     shift
+    mvnmod="test $flags $module -Dtest=$1"
     shift
     if command -v mvnd &> /dev/null; then
         mvnd $mvnmod "$@"

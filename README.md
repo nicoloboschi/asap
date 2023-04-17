@@ -38,3 +38,6 @@ You can append any other flag after the command.
 - `asap cmodonly <module>`: build and clean the module (`install`) without dependant modules
 - `asap test <module> <test-class/method>`: run tests for a module, you can specify a class/method
 - `asap dep <module>`: show dependencies of a module. You can append `-Dscope=compile` to remove test dependencies.
+
+
+To build the current directory module, just pass `.` as `module`.
