@@ -65,7 +65,7 @@ elif [ "$1" == "dep" ]; then
     shift 
     module=$(get_module_param $1)
     shift 
-    mvndep="dependency:tree $flags -pl $module"
+    mvndep="dependency:tree $flags $module"
     if command -v mvnd &> /dev/null; then
         mvnd $mvndep "$@" | less
     else
