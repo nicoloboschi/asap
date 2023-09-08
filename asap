@@ -12,7 +12,7 @@ if [ "$#" -eq 0 ]; then
 fi
 
 pulsar_flags="-DskipSourceReleaseAssembly"
-flags="-Dcheckstyle.skip -Dspotbugs.skip -Dlicense.skip -Drat.skip -Djavadoc.skip -Dmaven.javadoc.skip -nsu $pulsar_flags"
+flags="-Dcheckstyle.skip -Dspotbugs.skip -Dlicense.skip -Drat.skip -Djavadoc.skip -Dmaven.javadoc.skip -Dspotless.skip -nsu $pulsar_flags"
 
 get_module_param() {
     local param=$1

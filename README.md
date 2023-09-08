@@ -24,6 +24,7 @@ asap mvn package
 - Javadoc
 - Apache RAT
 - License checks
+- Spotless
 
 
 ## Builtin commands
