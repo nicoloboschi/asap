@@ -3,7 +3,7 @@
 Speed up your local builds.
 Prepend 'asap' to maven commands to get useless checks to be skipped while you're developing locally.
 
-Only maven is supported. (`mvnd` as well ;) )
+Only maven,mvnd are supported.
 
 ## Get started
 
